@@ -1,7 +1,7 @@
 import {BaseEntity, CreateDateColumn, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
 
 export abstract class Base extends BaseEntity {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('increment')
     id!: number
 
     @CreateDateColumn({name: 'created_at', nullable: false})
