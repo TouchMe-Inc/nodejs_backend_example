@@ -1,5 +1,4 @@
 import {DataSource} from "typeorm";
-import ormconfig from "../ormconfig";
+import config from "../ormconfig";
 
-
-export const dataSource = new DataSource(ormconfig);
+export const dataSource = new DataSource(config);
