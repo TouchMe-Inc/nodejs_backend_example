@@ -5,8 +5,6 @@ import {Container} from 'typedi';
 import {controllers} from './controllers';
 import {middlewares} from "./middlewares";
 
-useContainer(Container);
-
 const app: express.Express = express();
 
 useExpressServer(app, {
@@ -16,5 +14,7 @@ useExpressServer(app, {
     controllers,
     middlewares
 });
+
+useContainer(Container);
 
 export default app;
