@@ -8,10 +8,10 @@ const dataSourceOptions: DataSourceOptions = {
     synchronize: TYPEORM_SYNCHRONIZE === 'true',
     logging: TYPEORM_LOGGING === 'true',
     entities: [
-        PROD ? 'dist/src/entities/*.entity.js' : 'src/entities/*.entity.ts'
+        PROD === 'true' ? 'dist/src/entities/**/*.entity.js' : 'src/entities/**/*.entity.ts'
     ],
     migrations: [
-        PROD
+        PROD === 'true'
             ? 'dist/src/database/migrations/**/*.js'
             : 'src/database/migrations/**/*.ts'
     ],
