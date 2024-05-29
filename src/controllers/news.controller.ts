@@ -15,7 +15,7 @@ export class NewsController {
     }
 
     @Get('/:id')
-    async show(@Param('id') id: number): Promise<News | null> {
-        return await this.newsService.getById(id);
+    show(@Param('id') id: number): Promise<News | null> {
+        return this.newsService.getById(id);
     }
 }
