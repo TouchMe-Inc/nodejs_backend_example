@@ -1,5 +1,5 @@
 import path from "node:path";
-import {PROD, TYPEORM_DATABASE, TYPEORM_LOGGING, TYPEORM_MIGRATIONS_RUN, TYPEORM_SYNCHRONIZE} from "./src/config";
+import {ENV_PROD, TYPEORM_DATABASE, TYPEORM_LOGGING, TYPEORM_MIGRATIONS_RUN, TYPEORM_SYNCHRONIZE} from "./src/config";
 import {DataSourceOptions} from "typeorm/data-source/DataSourceOptions";
 
 const dataSourceOptions: DataSourceOptions = {
@@ -8,10 +8,10 @@ const dataSourceOptions: DataSourceOptions = {
     synchronize: TYPEORM_SYNCHRONIZE === 'true',
     logging: TYPEORM_LOGGING === 'true',
     entities: [
-        PROD === 'true' ? 'dist/src/entities/**/*.entity.js' : 'src/entities/**/*.entity.ts'
+        ENV_PROD ? 'dist/src/entities/**/*.entity.js' : 'src/entities/**/*.entity.ts'
     ],
     migrations: [
-        PROD === 'true'
+        ENV_PROD
             ? 'dist/src/database/migrations/**/*.js'
             : 'src/database/migrations/**/*.ts'
     ],

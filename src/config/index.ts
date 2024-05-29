@@ -2,9 +2,10 @@ import dotnet from 'dotenv';
 
 dotnet.config();
 
+export const ENV_PROD = process.env.ENV === 'prod';
+
 export const {
     PORT,
-    PROD,
     RATE_LIMIT_WINDOW,
     RATE_LIMIT_MAX_REQUESTS,
     TYPEORM_DATABASE,
