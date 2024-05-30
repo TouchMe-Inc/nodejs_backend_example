@@ -9,7 +9,23 @@ export class NewsService {
 
     getById(id: number) {
         return this.newsRepository.findOneBy({
-            "id": id
+            id
         });
+    }
+
+    getAll() {
+        return this.newsRepository.find();
+    }
+
+    create(news: News) {
+        return this.newsRepository.save(news);
+    }
+
+    updateById(id: number, news: News) {
+        return this.newsRepository.update(id, news);
+    }
+
+    deleteById(id: number) {
+        return this.newsRepository.delete(id);
     }
 }
