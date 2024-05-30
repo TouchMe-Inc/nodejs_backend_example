@@ -2,8 +2,8 @@ import {Body, Delete, Get, JsonController, Param, Post, Put} from "routing-contr
 import {plainToClass} from "class-transformer";
 import {Service} from "typedi";
 import {NewsService} from "../services/news.service";
-import {News} from "../entities/news.entity";
-import {NewsDto} from "../dto/news.dto";
+import {News} from "@entities/news.entity";
+import {NewsDto} from "@dto/news.dto";
 
 @JsonController('/news')
 @Service()
@@ -22,14 +22,14 @@ export class NewsController {
     }
 
     @Post()
-    create(@Body({ validate: true }) createDto: NewsDto) {
+    create(@Body({validate: true}) createDto: NewsDto) {
         const news = plainToClass(News, createDto)
 
         return this.newsService.create(news);
     }
 
     @Put('/:id')
-    update(@Param('id') id: number, @Body({ validate: true }) updateDto: NewsDto) {
+    update(@Param('id') id: number, @Body({validate: true}) updateDto: NewsDto) {
         const news = plainToClass(News, updateDto)
 
         return this.newsService.updateById(id, news);

@@ -1,7 +1,7 @@
 import {Service} from "typedi";
 import {Repository} from "typeorm";
 import {dataSource} from "../database";
-import {News} from "../entities/news.entity";
+import {News} from "@entities/news.entity";
 
 @Service()
 export class NewsService {
