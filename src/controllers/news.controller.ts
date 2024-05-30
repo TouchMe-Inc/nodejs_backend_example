@@ -37,6 +37,6 @@ export class NewsController {
 
     @Delete('/:id')
     delete(@Param('id') id: number) {
-        return this.newsService.getById(id);
+        return this.newsService.deleteById(id);
     }
 }
