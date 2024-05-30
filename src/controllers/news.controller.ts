@@ -1,10 +1,8 @@
 import {Body, Delete, Get, JsonController, Param, Post, Put} from "routing-controllers";
+import {plainToClass} from "class-transformer";
 import {Service} from "typedi";
 import {NewsService} from "../services/news.service";
 import {News} from "../entities/news.entity";
-import {UserDto} from "../dto/user.dto";
-import {plainToClass} from "class-transformer";
-import {User} from "../entities/user.entity";
 import {NewsDto} from "../dto/news.dto";
 
 @JsonController('/news')
