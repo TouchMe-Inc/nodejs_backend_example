@@ -9,10 +9,10 @@ export class CreateNews1716988684892 implements MigrationInterface {
                 columns: [
                     {
                         name: 'id',
-                        type: 'int',
+                        type: 'INTEGER',
                         isPrimary: true,
-                        //isGenerated: true,
-                        //generationStrategy: 'increment'
+                        isGenerated: true,
+                        generationStrategy: 'increment'
                     },
                     {
                         name: 'title',
