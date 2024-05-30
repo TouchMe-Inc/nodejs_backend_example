@@ -9,7 +9,23 @@ export class UsersService {
 
     getById(id: number) {
         return this.userRepository.findOneBy({
-            "id": id
+            id
         });
+    }
+
+    getAll() {
+        return this.userRepository.find();
+    }
+
+    create(user: User) {
+        return this.userRepository.save(user);
+    }
+
+    updateById(id: number, user: User) {
+        return this.userRepository.update(id, user);
+    }
+
+    deleteById(id: number) {
+        return this.userRepository.delete(id);
     }
 }
