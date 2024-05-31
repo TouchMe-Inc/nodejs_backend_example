@@ -2,8 +2,8 @@ import {Body, Delete, Get, JsonController, Param, Post, Put} from "routing-contr
 import {plainToClass} from 'class-transformer';
 import {Service} from "typedi";
 import {UsersService} from "../services/users.service";
-import {User} from "@entities/user.entity";
-import {UserDto} from "@dto/user.dto";
+import {User} from "../entities/user.entity";
+import {UserDto} from "../dto/user.dto";
 
 @JsonController('/users')
 @Service()
@@ -22,14 +22,14 @@ export class UserController {
     }
 
     @Post()
-    create(@Body({validate: true}) createDto: UserDto) {
+    create(@Body({ validate: true }) createDto: UserDto) {
         const user = plainToClass(User, createDto)
 
         return this.usersService.create(user);
     }
 
     @Put('/:id')
-    update(@Param('id') id: number, @Body({validate: true}) updateDto: UserDto) {
+    update(@Param('id') id: number, @Body({ validate: true }) updateDto: UserDto) {
         const user = plainToClass(User, updateDto)
 
         return this.usersService.updateById(id, user);
