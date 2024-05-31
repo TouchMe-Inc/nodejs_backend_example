@@ -12,4 +12,6 @@ export const {
     TYPEORM_SYNCHRONIZE,
     TYPEORM_LOGGING,
     TYPEORM_MIGRATIONS_RUN,
+    JWT_SECRET,
+    JWT_TOKEN_LIFE
 } = process.env;
