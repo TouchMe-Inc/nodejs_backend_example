@@ -12,7 +12,7 @@ export class UserController {
     }
 
     @Get()
-    async index() {
+    index() {
         return this.usersService.getAll();
     }
 
@@ -22,14 +22,14 @@ export class UserController {
     }
 
     @Post()
-    create(@Body({ validate: true }) createDto: UserDto) {
+    create(@Body({validate: true}) createDto: UserDto) {
         const user = plainToClass(User, createDto)
 
         return this.usersService.create(user);
     }
 
     @Put('/:id')
-    update(@Param('id') id: number, @Body({ validate: true }) updateDto: UserDto) {
+    update(@Param('id') id: number, @Body({validate: true}) updateDto: UserDto) {
         const user = plainToClass(User, updateDto)
 
         return this.usersService.updateById(id, user);
