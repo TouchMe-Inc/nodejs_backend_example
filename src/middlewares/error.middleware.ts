@@ -6,7 +6,8 @@ import {Request, Response} from 'express';
 @Service()
 export class ErrorMiddleware implements ExpressErrorMiddlewareInterface {
     error(error: any, request: Request, response: Response, next: (err?: any) => any): void {
-        response.json({
+        const status: number = error.status || 400
+        response.status(status).json({
             "error": error,
         });
     }
