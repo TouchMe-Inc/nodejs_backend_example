@@ -12,7 +12,7 @@ export class NewsController {
     }
 
     @Get()
-    async index() {
+    index() {
         return this.newsService.getAll();
     }
 
@@ -22,14 +22,14 @@ export class NewsController {
     }
 
     @Post()
-    create(@Body({ validate: true }) createDto: NewsDto) {
+    create(@Body({validate: true}) createDto: NewsDto) {
         const news = plainToClass(News, createDto)
 
         return this.newsService.create(news);
     }
 
     @Put('/:id')
-    update(@Param('id') id: number, @Body({ validate: true }) updateDto: NewsDto) {
+    update(@Param('id') id: number, @Body({validate: true}) updateDto: NewsDto) {
         const news = plainToClass(News, updateDto)
 
         return this.newsService.updateById(id, news);
