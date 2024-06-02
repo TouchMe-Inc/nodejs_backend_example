@@ -1,21 +1,25 @@
 import {JsonController, Post} from "routing-controllers";
 import {Service} from "typedi";
+import {AuthService} from "../services/auth.service";
 
 @JsonController('/auth')
 @Service()
 export class AuthController {
+    constructor(private readonly authService: AuthService) {
+    }
+
     @Post('/sign-up')
-    async signUp() {
-        return [];
+    signUp() {
+        return this.authService.signUp();
     }
 
     @Post('/sign-in')
-    async signIn() {
-        return 'token';
+    signIn() {
+        return this.authService.signIn();
     }
 
     @Post('/logout')
-    async logOut() {
-
+    logOut() {
+        return this.authService.logOut();
     }
 }
