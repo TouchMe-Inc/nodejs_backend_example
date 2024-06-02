@@ -4,8 +4,8 @@ import {Column, Entity} from "typeorm";
 @Entity("news")
 export class News extends Base {
     @Column({nullable: false})
-    title?: string;
+    title!: string;
 
     @Column({nullable: false})
-    body?: string;
+    body!: string;
 }
