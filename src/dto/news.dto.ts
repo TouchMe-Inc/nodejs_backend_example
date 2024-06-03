@@ -2,8 +2,8 @@ import {IsString} from 'class-validator';
 
 export class NewsDto {
     @IsString()
-    title?: string;
+    title!: string;
 
     @IsString()
-    body?: string;
+    body!: string;
 }
