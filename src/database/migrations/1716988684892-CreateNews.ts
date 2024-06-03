@@ -16,11 +16,13 @@ export class CreateNews1716988684892 implements MigrationInterface {
                     },
                     {
                         name: 'title',
-                        type: 'varchar'
+                        type: 'varchar',
+                        isNullable: false
                     },
                     {
                         name: 'body',
-                        type: 'varchar'
+                        type: 'varchar',
+                        isNullable: false
                     },
                     {
                         name: 'created_at',
