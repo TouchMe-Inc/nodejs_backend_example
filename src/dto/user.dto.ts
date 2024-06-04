@@ -4,6 +4,7 @@ export class UserDto {
     @IsString()
     login!: string;
 
+    @IsString()
     @MinLength(6)
     password!: string;
 }
