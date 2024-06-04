@@ -1,4 +1,4 @@
-import {Body, JsonController, Post} from "routing-controllers";
+import {Authorized, Body, JsonController, Post} from "routing-controllers";
 import {Service} from "typedi";
 import {UsersService} from "../services/users.service";
 import {User} from "../entities/user.entity";
@@ -23,14 +23,16 @@ export class AuthController {
         const newUser: User = new User();
         newUser.login = authDto.login;
         newUser.password = this.passwordService.hash(authDto.password);
+        newUser.role = "user";
 
         const createdUser: User = await this.userService.create(newUser);
 
         return this.jwtService.sign({
-            id: createdUser.id, login: createdUser.login
+            id: createdUser.id
         });
     }
 
+    @Authorized()
     @Post('/sign-in')
     async signIn(@Body({validate: true}) authDto: AuthDto) {
         const user = await this.userService.getByLoginWithPassword(authDto.login);
@@ -44,7 +46,7 @@ export class AuthController {
         }
 
         return this.jwtService.sign({
-            id: user.id, login: user.login
+            id: user.id
         });
     }
 }
