@@ -8,7 +8,7 @@ export class ErrorMiddleware implements ExpressErrorMiddlewareInterface {
     error(error: any, request: Request, response: Response, next: (err?: any) => any): void {
         const status: number = error.status || 400
         response.status(status).json({
-            "error": error,
+            "error": error.message,
         });
     }
 }
