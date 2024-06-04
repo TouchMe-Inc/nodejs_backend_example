@@ -12,31 +12,31 @@ export class NewsController {
     }
 
     @Get()
-    index() {
+    async index() {
         return this.newsService.getAll();
     }
 
     @Get('/:id')
-    show(@Param('id') id: number): Promise<News | null> {
+    async show(@Param('id') id: number): Promise<News | null> {
         return this.newsService.getById(id);
     }
 
     @Post()
-    create(@Body({validate: true}) createDto: NewsDto) {
+    async create(@Body({validate: true}) createDto: NewsDto) {
         const news = plainToClass(News, createDto)
 
         return this.newsService.create(news);
     }
 
     @Put('/:id')
-    update(@Param('id') id: number, @Body({validate: true}) updateDto: NewsDto) {
+    async update(@Param('id') id: number, @Body({validate: true}) updateDto: NewsDto) {
         const news = plainToClass(News, updateDto)
 
         return this.newsService.updateById(id, news);
     }
 
     @Delete('/:id')
-    delete(@Param('id') id: number) {
+    async delete(@Param('id') id: number) {
         return this.newsService.deleteById(id);
     }
 }

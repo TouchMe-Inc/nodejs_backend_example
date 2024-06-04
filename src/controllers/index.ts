@@ -1,5 +1,5 @@
 import {UserController} from "./users.controller";
-import {BaseController} from "./auth/base.controller";
+import {AuthController} from "./auth.controller";
 import {NewsController} from "./news.controller";
 
-export const controllers = [UserController,BaseController, NewsController];
+export const controllers = [UserController, AuthController, NewsController];
