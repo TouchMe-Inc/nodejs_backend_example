@@ -4,9 +4,9 @@ import {DataSourceOptions} from "typeorm/data-source/DataSourceOptions";
 
 const dataSourceOptions: DataSourceOptions = {
     type: 'sqlite',
-    database: path.resolve(__dirname, "..").concat(TYPEORM_DATABASE || '/sqlite/database.sqlite'),
-    synchronize: TYPEORM_SYNCHRONIZE === 'true',
-    logging: TYPEORM_LOGGING === 'true',
+    database: path.resolve(__dirname).concat(TYPEORM_DATABASE || '/sqlite/database.sqlite'),
+    synchronize: TYPEORM_SYNCHRONIZE,
+    logging: TYPEORM_LOGGING,
     entities: [
         ENV_PROD ? 'dist/src/entities/**/*.entity.js' : 'src/entities/**/*.entity.ts'
     ],
@@ -17,5 +17,5 @@ const dataSourceOptions: DataSourceOptions = {
     ],
     migrationsRun: TYPEORM_MIGRATIONS_RUN === 'true'
 };
-
+console.log(path.resolve(__dirname).concat(TYPEORM_DATABASE || '/sqlite/database.sqlite'));
 export = dataSourceOptions;
