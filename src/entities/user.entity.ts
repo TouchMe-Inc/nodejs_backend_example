@@ -9,4 +9,7 @@ export class User extends Base {
 
     @Column({select: false})
     password!: string;
+
+    @Column()
+    role!: string;
 }
