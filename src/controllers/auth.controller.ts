@@ -32,7 +32,6 @@ export class AuthController {
         });
     }
 
-    @Authorized()
     @Post('/sign-in')
     async signIn(@Body({validate: true}) authDto: AuthDto) {
         const user = await this.userService.getByLoginWithPassword(authDto.login);
