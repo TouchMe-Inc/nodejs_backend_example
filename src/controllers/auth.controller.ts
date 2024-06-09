@@ -1,4 +1,4 @@
-import {Authorized, Body, JsonController, Post} from "routing-controllers";
+import {Body, JsonController, Post} from "routing-controllers";
 import {Service} from "typedi";
 import {UsersService} from "../services/users.service";
 import {User} from "../entities/user.entity";
@@ -6,7 +6,7 @@ import {JwtService} from "../services/jwt.service";
 import {AuthDto} from "../dto/auth.dto";
 import {PasswordService} from "../services/password";
 
-@JsonController('/auth')
+@JsonController('/api/v1/auth')
 @Service()
 export class AuthController {
     constructor(private readonly userService: UsersService, private readonly jwtService: JwtService, private readonly passwordService: PasswordService) {

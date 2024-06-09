@@ -1,6 +1,5 @@
 import 'reflect-metadata';
-import express from 'express';
-import {Action, getMetadataArgsStorage, useContainer, useExpressServer} from 'routing-controllers';
+import {Action, createExpressServer, getMetadataArgsStorage, useContainer} from 'routing-controllers';
 import {Container} from 'typedi';
 import {controllers} from './controllers';
 import {middlewares} from "./middlewares";
@@ -9,12 +8,10 @@ import {JwtService} from "./services/jwt.service";
 import {UsersService} from "./services/users.service";
 import {RoutingControllersOptions} from "routing-controllers/types/RoutingControllersOptions";
 
-const app: express.Express = express();
-
 useContainer(Container);
 
 const routingControllersOptions: RoutingControllersOptions = {
-    routePrefix: '/api',
+    routePrefix: '/',
     defaultErrorHandler: false,
     interceptors: [],
     controllers,
@@ -37,8 +34,7 @@ const routingControllersOptions: RoutingControllersOptions = {
     },
 }
 
-
-useExpressServer(app, routingControllersOptions);
+const app: any = createExpressServer(routingControllersOptions);
 
 useSwagger(app, getMetadataArgsStorage(), routingControllersOptions);
 
