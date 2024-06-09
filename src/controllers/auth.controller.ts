@@ -6,7 +6,7 @@ import {JwtService} from "../services/jwt.service";
 import {AuthDto} from "../dto/auth.dto";
 import {PasswordService} from "../services/password";
 
-@JsonController('/api/v1/auth')
+@JsonController('api/v1/auth')
 @Service()
 export class AuthController {
     constructor(private readonly userService: UsersService, private readonly jwtService: JwtService, private readonly passwordService: PasswordService) {

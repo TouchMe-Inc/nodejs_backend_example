@@ -5,7 +5,7 @@ import {NewsService} from "../services/news.service";
 import {News} from "../entities/news.entity";
 import {NewsDto} from "../dto/news.dto";
 
-@JsonController('/api/v1/news')
+@JsonController('api/v1/news')
 @Service()
 export class NewsController {
     constructor(private readonly newsService: NewsService) {

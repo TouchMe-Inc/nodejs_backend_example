@@ -6,7 +6,7 @@ import {User} from "../entities/user.entity";
 import {UserDto} from "../dto/user.dto";
 import {PasswordService} from "../services/password";
 
-@JsonController('/api/v1/users')
+@JsonController('api/v1/users')
 @Service()
 export class UserController {
     constructor(private readonly usersService: UsersService, private readonly passwordService: PasswordService) {
