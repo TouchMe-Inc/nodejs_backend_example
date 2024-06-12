@@ -1,14 +1,13 @@
 {
   "name": "nodejs_news",
   "version": "1.0.0",
-  "description": "Rest API",
+  "description": "A simple example of an API implementation in NodeJS",
   "author": "TouchMe-Inc",
   "scripts": {
     "build": "tsc",
     "start": "cross-env ENV=prod node dist/src/server.js",
     "dev": "cross-env ENV=dev nodemon src/server.ts"
   },
-  "license": "ISC",
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
