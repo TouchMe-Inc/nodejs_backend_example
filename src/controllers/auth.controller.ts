@@ -5,6 +5,7 @@ import {User} from "../entities/user.entity";
 import {JwtService} from "../services/jwt.service";
 import {AuthDto} from "../dto/auth.dto";
 import {PasswordService} from "../services/password";
+import {Role} from "../enums/Role";
 
 @JsonController('api/v1/auth')
 @Service()
@@ -23,7 +24,7 @@ export class AuthController {
         const newUser: User = new User();
         newUser.login = authDto.login;
         newUser.password = this.passwordService.hash(authDto.password);
-        newUser.role = "user";
+        newUser.role = Role.USER;
 
         const createdUser: User = await this.userService.create(newUser);
 

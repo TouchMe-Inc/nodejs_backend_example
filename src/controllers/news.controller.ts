@@ -4,6 +4,7 @@ import {Service} from "typedi";
 import {NewsService} from "../services/news.service";
 import {News} from "../entities/news.entity";
 import {NewsDto} from "../dto/news.dto";
+import {Role} from "../enums/Role";
 
 @JsonController('api/v1/news')
 @Service()
@@ -23,7 +24,7 @@ export class NewsController {
         return this.newsService.getById(id);
     }
 
-    @Authorized(["admin"])
+    @Authorized([Role.ADMIN])
     @Post()
     async create(@Body({validate: true}) createDto: NewsDto) {
         const news = plainToClass(News, createDto)
@@ -31,7 +32,7 @@ export class NewsController {
         return this.newsService.create(news);
     }
 
-    @Authorized(["admin"])
+    @Authorized([Role.ADMIN])
     @Put('/:id')
     async update(@Param('id') id: number, @Body({validate: true}) updateDto: NewsDto) {
         const news = plainToClass(News, updateDto)
@@ -39,7 +40,7 @@ export class NewsController {
         return this.newsService.updateById(id, news);
     }
 
-    @Authorized(["admin"])
+    @Authorized([Role.ADMIN])
     @Delete('/:id')
     async delete(@Param('id') id: number) {
         return this.newsService.deleteById(id);

@@ -5,6 +5,7 @@ import {UsersService} from "../services/users.service";
 import {User} from "../entities/user.entity";
 import {UserDto} from "../dto/user.dto";
 import {PasswordService} from "../services/password";
+import {Role} from "../enums/Role";
 
 @JsonController('api/v1/users')
 @Service()
@@ -24,7 +25,7 @@ export class UserController {
         return this.usersService.getById(id);
     }
 
-    @Authorized(["admin"])
+    @Authorized([Role.ADMIN])
     @Post()
     async create(@Body({validate: true}) createDto: UserDto) {
         const user: User = plainToClass(User, createDto);
@@ -33,7 +34,7 @@ export class UserController {
         return this.usersService.create(user);
     }
 
-    @Authorized(["admin"])
+    @Authorized([Role.ADMIN])
     @Put('/:id')
     async update(@Param('id') id: number, @Body({validate: true}) updateDto: UserDto) {
         const user: User = plainToClass(User, updateDto)
@@ -41,7 +42,7 @@ export class UserController {
         return this.usersService.updateById(id, user);
     }
 
-    @Authorized(["admin"])
+    @Authorized([Role.ADMIN])
     @Delete('/:id')
     async delete(@Param('id') id: number) {
         return this.usersService.deleteById(id);
