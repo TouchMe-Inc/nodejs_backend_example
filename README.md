@@ -1,4 +1,4 @@
-# About nodejs_ (Coming soon project name)
+# About nodejs_backend_example
 A simple example of an API implementation in NodeJS.
 
 ##  Action
